@@ -20,7 +20,8 @@ def index():
         session['message'] = "I am thinking of a number 1 through 100....."
 
     message = session['message']
-    return render_template('index.html', message=message)
+
+    return render_template('index.html', message=message, guess_message=session['guess_message'])
 
 @app.route('/guess', methods=['POST'])
 def guess():
@@ -29,21 +30,25 @@ def guess():
 
     if user_guess == random_number:
         session['message'] = "You are correct!"
-        message_color = "text-success"
+        session['guess_message'] = "Play again....double or nothing!"
     elif user_guess < random_number:
         session['message'] = "Too low! Try again"
-        message_color = "text-danger"
+        session['guess_message'] = "Guess again?"
     else:
         session['message'] = "Too high! Try again"
-        message_color = "text-warning"
+        session['guess_message'] = "Guess again?"
 
-    return redirect(url_for('index', message=session['message'], message_color=message_color))
+    return redirect(url_for('index', message=session['message'], guess_message=session['guess_message']))
 
 @app.route('/restart', methods=['POST'])
 def restart():
     session.pop('random_number', None)
     session.pop('message', None)
-    return redirect(url_for('index'))
+
+    if session['guess_message'] == "Play again....double or nothing!":
+        session['guess_message'] = "Take a guess!"
+
+    return redirect(url_for('index', guess_message=session['guess_message']))
 
 
 # Delete Users Controller
