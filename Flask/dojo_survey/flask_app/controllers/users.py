@@ -1,5 +1,5 @@
 from flask_app import app
-from flask import render_template, redirect, request, session
+from flask import render_template, redirect, request, session, url_for
 from flask_app.models import user # import entire file, rather than class, to avoid circular imports
 # As you add model files add them the the import above
 # This file is the second stop in Flask's thought process, here it looks for a route that matches the request
@@ -12,11 +12,34 @@ from flask_app.models import user # import entire file, rather than class, to av
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    name = session['name']
+    dojo_location = session['dojo_location']
+    favorite_language = session['favorite_language']
+    comments = session['comments']
+    print(session)
 
+    return render_template('index.html', name=name, dojo_location=dojo_location, favorite_language=favorite_language, comments=comments)
 
+@app.route('/information', methods=['POST'])
+def information():
+
+    session['name'] = request.form['name']
+    session['dojo_location'] = request.form['dojo_location']
+    session['favorite_language'] = request.form['favorite_language']
+    session['comments'] = request.form['comments']
+
+    name = session['name']
+    dojo_location = session['dojo_location']
+    favorite_language = session['favorite_language']
+    comments = session['comments']
+        
+    return render_template('information.html',  name=name, dojo_location=dojo_location, favorite_language=favorite_language, comments=comments)
 # Update Users Controller
 
+@app.route('/return')
+def go_back():
+
+    return redirect(url_for('index'))
 
 
 # Delete Users Controller

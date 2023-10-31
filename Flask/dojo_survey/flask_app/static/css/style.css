@@ -1,0 +1,29 @@
+.info-box {
+    background-color: white;
+    border: solid 2px grey;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.info-label {
+    font-weight: bold;
+}
+
+.info-value {
+    font-style: italic;
+    overflow: auto;
+}
+
+.comment-box {
+    background-color: white;
+    border: solid 2px grey;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: black;
+    height: 100px;
+}
+
+.comment-value {
+    word-wrap: break-word;
+}
