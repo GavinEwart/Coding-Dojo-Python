@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>Ninja Gold</title>
+</head>
+<body>
+    <main class="text-center mx-auto">
+        <h1 class="text-warning display-2 fw-bold">Find Gold!</h1>
+        <div class="text-end">
+            <label class="fw-bold">Your Gold:</label>
+            <input class="text-warning">
+        </div>
+        <div class="form-container">
+            <div class="d-flex flex-row justify-content-around text-center">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="" method="post">
+                            <h2 class="text-center">Farm</h2>
+                            <p class="text-center">Earns 10-20 gold</p>
+                            <input name="" type="hidden" value="">
+                            <input type="submit" class="btn btn-primary btn-block" value="Find Gold!">
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <form action="" method="post">
+                            <h2 class="text-center">Cave</h2>
+                            <p class="text-center">Earns 5-10 gold</p>
+                            <input name="" type="hidden" value="">
+                            <input type="submit" class="btn btn-primary btn-block" value="Find Gold!">
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <form action="" method="post">
+                            <h2 class="text-center">House</h2>
+                            <p class="text-center">Earns 2-5 gold</p>
+                            <input name="" type="hidden" value="">
+                            <input type="submit" class="btn btn-primary btn-block" value="Find Gold!">
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <form action="" method="post">
+                            <h2 class="text-center">Casino</h2>
+                            <p class="text-center">Earns/takes 0-50 gold</p>
+                            <input name="" type="hidden" value="">
+                            <input type="submit" class="btn btn-primary btn-block" value="Find Gold!">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <label>Console:</label>
+        <input>
+    </main>
+</body>
+</html>
+
+<!-- Format for adding images -->
+<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->
