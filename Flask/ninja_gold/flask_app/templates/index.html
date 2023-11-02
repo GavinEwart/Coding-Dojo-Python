@@ -14,13 +14,14 @@
         <h1 class="text-warning display-2 fw-bold">Find Gold!</h1>
         <div class="text-end">
             <label class="fw-bold">Your Gold:</label>
-            <input class="text-warning">
+            <span class="text-warning">{{ total_gold }}</span>
         </div>
         <div class="form-container">
             <div class="d-flex flex-row justify-content-around text-center">
                 <div class="card">
                     <div class="card-body">
-                        <form action="" method="post">
+                        <form action="/process_money" method="post">
+                            <input type="hidden" name="action" value="farm">
                             <h2 class="text-center">Farm</h2>
                             <p class="text-center">Earns 10-20 gold</p>
                             <input name="" type="hidden" value="">
@@ -30,7 +31,8 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <form action="" method="post">
+                        <form action="/process_money" method="post">
+                            <input type="hidden" name="action" value="cave">
                             <h2 class="text-center">Cave</h2>
                             <p class="text-center">Earns 5-10 gold</p>
                             <input name="" type="hidden" value="">
@@ -40,7 +42,8 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <form action="" method="post">
+                        <form action="/process_money" method="post">
+                            <input type="hidden" name="action" value="house">
                             <h2 class="text-center">House</h2>
                             <p class="text-center">Earns 2-5 gold</p>
                             <input name="" type="hidden" value="">
@@ -50,7 +53,8 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <form action="" method="post">
+                        <form action="/process_money" method="post">
+                            <input type="hidden" name="action" value="casino">
                             <h2 class="text-center">Casino</h2>
                             <p class="text-center">Earns/takes 0-50 gold</p>
                             <input name="" type="hidden" value="">
@@ -60,8 +64,18 @@
                 </div>
             </div>
         </div>
-        <label>Console:</label>
-        <input>
+        <div class="form-container">
+            <div class="d-flex align-items-start">
+                <label for="console" class="console-tag">Console:</label>
+            </div>
+            <div id="console" class="custom-console">
+                <ul>
+                    {% for entry in console_log %}
+                        <li>{{ entry }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </main>
 </body>
 </html>

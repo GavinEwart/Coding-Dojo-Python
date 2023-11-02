@@ -3,20 +3,55 @@ from flask import render_template, redirect, request, session
 from flask_app.models import user # import entire file, rather than class, to avoid circular imports
 # As you add model files add them the the import above
 # This file is the second stop in Flask's thought process, here it looks for a route that matches the request
-
+import random
 # Create Users Controller
 
-
-
+def calculate_gold(action):
+    if action == 'farm':
+        min_gold = 10
+        max_gold = 20
+        return random.randint(min_gold, max_gold)
+    elif action == 'cave':
+        min_gold = 5
+        max_gold = 10
+        return random.randint(min_gold, max_gold)
+    elif action == 'house':
+        min_gold = 2
+        max_gold = 5
+        return random.randint(min_gold, max_gold)
+    elif action == 'casino':
+        min_gold = -50
+        max_gold = 50
+        return random.randint(min_gold, max_gold)
+    else:
+        return 0
 # Read Users Controller
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    if 'total_gold' not in session:
+        session['total_gold'] = 0
+    if 'console_log' not in session:
+        session['console_log'] = []
 
+    total_gold = session['total_gold']
+    console_log = session['console_log']
 
-@app.route('/process-money')
+    return render_template('index.html', total_gold=total_gold, console_log=console_log)
+
+@app.route('/process_money', methods=['POST'])
 def process_money():
+    action = request.form['action']
+    gold_earned = calculate_gold(action)
+
+    total_gold = session['total_gold']
+    console_log = session['console_log']
+
+    total_gold += gold_earned
+    console_log.append(f"You {action} {gold_earned} gold")
+
+    session['total_gold'] = total_gold
+    session['console_log'] = console_log
     return redirect('/')
 
 # Update Users Controller

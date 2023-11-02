@@ -1,3 +1,25 @@
 .form-container {
     width: 1000px;
+    margin: 50px auto;
+}
+
+.custom-console {
+    width: 1000px;
+    height: 400px;
+    display: block;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.console-tag {
+    font-weight: bold;
+    
+}
+
+
+/* Twitter Bootstrap */
+:root {
+    .card {
+        border: 2px solid black;
+    }
 }
